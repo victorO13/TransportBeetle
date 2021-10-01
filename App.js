@@ -6,7 +6,7 @@ import Menu from './src/components/Menu';
 const Stack = createStackNavigator();
 
 export default function App() {
-    return (
+    return ( 
         <NavigationContainer>
             <Stack.Navigator initialRouteName="Login">
                 <Stack.Screen name="Menu" component={Menu} options={{ headerShown: false }} />
