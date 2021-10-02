@@ -94,7 +94,7 @@ app.post('/create', async (req, res) => {
 });
 
 //Start server
-let port = process.env.PORT || 3000;
+let port = process.env.PORT || config.urlRoot;
 app.listen(port, (req, res) => {
     console.log('Servidor Rodando');
 });
