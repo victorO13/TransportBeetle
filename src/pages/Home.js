@@ -60,12 +60,18 @@ export default function Home({ route, navigation }) {
 
 
   useEffect(() => {
-    if(origin == null){LoadLocation();}
+    if (origin == null) { LoadLocation(); }
     setTimeout(() => {
       LoadUser();
-  }, 5000);
-    
+    }, 5000);
+
   }, [user]);
+
+  function Checkout() {
+    setDistance(null);
+    setAddress('');
+    navigation.navigate('Checkout', { price: price.toFixed(2), address: address, name: user.name, email: user.email })
+  }
 
   return (
     <View style={[css.container, css.containerTop]}>
@@ -136,7 +142,7 @@ export default function Home({ route, navigation }) {
             <Text style={css.distance_text}>
               <MaterialCommunityIcons name="map-marker-distance" size={30} color={colors.colorText} /> Distance: {distance.toFixed(2).replace('.', ',')}KM
             </Text>
-            <TouchableOpacity style={css.price} onPress={() => navigation.navigate('Checkout', { price: price.toFixed(2), address: address, name: user.name, email: user.email })}>
+            <TouchableOpacity style={css.price} onPress={() => Checkout()}>
               <Text style={css.price_text}>
                 <MaterialIcons name="payment" size={30} color={colors.secondary} />
                 Pay R${price.toFixed(2).replace('.', ',')}

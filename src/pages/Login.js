@@ -36,6 +36,8 @@ export default function Login({ navigation, route }) {
             }, 5000);
         } else {
            await AsyncStorage.setItem('userData', JSON.stringify(json));
+           setEmail(null);
+           setPassword(null);
             navigation.navigate('Menu');
         }
     }
@@ -60,8 +62,8 @@ export default function Login({ navigation, route }) {
             </View>}
 
             <View style={css.login__form}>
-                <TextInput style={css.login__input} placeholder='User:' placeholderTextColor={colors.colorText} onChangeText={text => setEmail(text)} />
-                <TextInput style={css.login__input} placeholder='password:' placeholderTextColor={colors.colorText} onChangeText={text => setPassword(text)} secureTextEntry={true} />
+                <TextInput style={css.login__input} placeholder='E-mail:' value={email} placeholderTextColor={colors.colorText} onChangeText={text => setEmail(text)} />
+                <TextInput style={css.login__input} placeholder='password:' value={password} placeholderTextColor={colors.colorText} onChangeText={text => setPassword(text)} secureTextEntry={true} />
                 <TouchableOpacity style={css.login__button} onPress={() => sendForm()}>
                     <Text style={css.login__buttonText}>sing in</Text>
                 </TouchableOpacity>

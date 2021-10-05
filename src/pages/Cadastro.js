@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { KeyboardAvoidingView, TextInput, TouchableOpacity, Image, Text, View } from 'react-native';
 import AsyncStorage from '@react-native-async-storage/async-storage';
-
+import { TextInputMask } from 'react-native-masked-text'
 //colors
 import colors from '../style/colors/Colors';
 //css
@@ -47,7 +47,15 @@ export default function Cadastro({navigation, route}) {
             
             <View style={css.cadastro__form}>
                 <TextInput style={[css.cadastro__input]} placeholder='Name:' placeholderTextColor={colors.colorText}  onChangeText={text => setName(text)}/>
-                <TextInput style={css.cadastro__input} placeholder='Phone:' placeholderTextColor={colors.colorText} onChangeText={text => setPhone(text)}/>
+                <TextInputMask
+                    type={'cel-phone'}
+                    onChangeText={text => setPhone(text)}
+                    placeholder="Phone"
+                    placeholderTextColor={colors.colorText} 
+                    keyboardType={'numeric'}
+                    value={phone}
+                    style={css.cadastro__input}
+                />
                 <TextInput style={css.cadastro__input} placeholder='Email:' placeholderTextColor={colors.colorText} onChangeText={text => setEmail(text)}/>
                 <TextInput style={css.cadastro__input} placeholder='Password:' placeholderTextColor={colors.colorText} onChangeText={text => setPassword(text)} secureTextEntry={true} />
                 <TouchableOpacity style={css.cadastro__button} onPress={()=>sendForm()}>
