@@ -55,7 +55,7 @@ export default function Home({ route, navigation }) {
     let response = await AsyncStorage.getItem('userData');
     let json = JSON.parse(response);
     setUser(json);
-    setName(user.name);
+    //setName(user.name);
   }
 
 
@@ -135,7 +135,7 @@ export default function Home({ route, navigation }) {
           }}
         />
         {user && <Text style={css.txt}>
-          <FontAwesome name="map-marker" size={24} color={colors.colorText} /> Welcome {name}!
+          <FontAwesome name="map-marker" size={24} color={colors.colorText} /> Welcome {user.name}!
         </Text>}
         {distance &&
           <View style={css.distance}>

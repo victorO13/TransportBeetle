@@ -18,21 +18,16 @@ export default function Profile({ navigation }) {
 
     const [user, setUser] = useState(null);
 
-    useEffect(() => {
-        async function getUser() {
-            let response = await AsyncStorage.getItem('userData');
-            let json = JSON.parse(response);
-            setUser(json);
-            setName(user.name);
-            setEmail(user.email);
-            setPhone(user.phone);
-        }
-        getUser();
-    });
- 
-    const [name, setName] = useState(null);
-    const [phone, setPhone] = useState(null);
-    const [email, setEmail] = useState(null);
+    async function LoadUser() {
+        let response = await AsyncStorage.getItem('userData');
+        let json = JSON.parse(response);
+        setUser(json);
+      }
+    
+    
+      useEffect(() => {
+          LoadUser();
+      }, [user]);
 
     return (
         <View style={[css.container, css__logout.containerTop]}>
@@ -42,15 +37,15 @@ export default function Profile({ navigation }) {
                 <View style={css__perfil.view}>
                     <Text style={css__perfil.txt}>Name:</Text>
                     <Text style={css__perfil.input}>
-                        <FontAwesome name="user" size={20} color={colors.primary} /> {name}
+                        <FontAwesome name="user" size={20} color={colors.primary} /> {user.name}
                     </Text>
                     <Text style={css__perfil.txt}>Phone:</Text>
                     <Text style={css__perfil.input}>
-                        <FontAwesome name="phone" size={20} color={colors.primary} /> {phone}
+                        <FontAwesome name="phone" size={20} color={colors.primary} /> {user.phone}
                     </Text>
                     <Text style={css__perfil.txt}>E-mail:</Text>
                     <Text style={css__perfil.input}>
-                        <MaterialIcons name="email" size={20} color={colors.primary} /> {email}
+                        <MaterialIcons name="email" size={20} color={colors.primary} /> {user.email}
                     </Text>
                 </View>}
 
