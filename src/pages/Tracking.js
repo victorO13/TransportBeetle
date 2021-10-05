@@ -50,10 +50,10 @@ export default function Tracking(props) {
     return (
         <View style={[css.container, css.motorista]}>
             <Image style={css.motorista__image} source={require('../../assets/motorista.jpg')} />
-            <Text style={css.motorista__text}>O motorista fulano está a caminho</Text>
+            <Text style={css.motorista__text}>the driver is on his way!</Text>
 
             <TouchableOpacity style={css.inicio} onPress={() => home()}>
-                <Text style={css.inicio__text}><FontAwesome name="map-marker" size={24} color={colors.secondary} /> Inicio</Text>
+                <Text style={css.inicio__text}><FontAwesome name="map-marker" size={24} color={colors.secondary} /> Home</Text>
             </TouchableOpacity>
         </View>
     );
@@ -62,7 +62,7 @@ export default function Tracking(props) {
 async function schedulePushNotification() {
     await Notifications.scheduleNotificationAsync({
         content: {
-            title: "Bettle Transport",
+            title: "Beetle Transport",
             body: 'thanks for using our service',
             data: { data: 'goes here' },
         },
