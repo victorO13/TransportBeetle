@@ -23,9 +23,9 @@ export default function Profile({ navigation }) {
             let response = await AsyncStorage.getItem('userData');
             let json = JSON.parse(response);
             setUser(json);
-            setName(json.name);
-            setEmail(json.email);
-            setPhone(json.phone);
+            setName(user.name);
+            setEmail(user.email);
+            setPhone(user.phone);
         }
         getUser();
     });

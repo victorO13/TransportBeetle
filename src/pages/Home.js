@@ -55,7 +55,7 @@ export default function Home({ route, navigation }) {
     let response = await AsyncStorage.getItem('userData');
     let json = JSON.parse(response);
     setUser(json);
-    setName(json.name);
+    setName(user.name);
   }
 
 
