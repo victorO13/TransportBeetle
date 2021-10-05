@@ -11,7 +11,7 @@ export default function Logout(props)
 {
     async function logout()
     {
-        await AsyncStorage.clear();
+        
         props.navigation.navigate('Login');
     }
     return (

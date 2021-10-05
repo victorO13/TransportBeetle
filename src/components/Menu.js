@@ -15,14 +15,16 @@ export default function Menu(props) {
     const Tab = createMaterialBottomTabNavigator();
 
     const [user, setUser] = useState(null);
-    useEffect(() => {
-        async function getUser() {
-            let response = await AsyncStorage.getItem('userData');
-            let json = JSON.parse(response);
-            setUser(json);
-        }
-        getUser();
-    });
+    async function LoadUser() {
+        let response = await AsyncStorage.getItem('userData');
+        let json = JSON.parse(response);
+        setUser(json);
+      }
+    
+    
+      useEffect(() => {
+          LoadUser();
+      }, [user]);
     return (
         <Tab.Navigator
             activeColor= {colors.colorText}
